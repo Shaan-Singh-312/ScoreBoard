@@ -20,13 +20,15 @@ public class Main {
             }
             s.nextLine();
         }
-        System.out.println(teams_lst[6]);
+        //System.out.println(teams_lst[6]);
         s.close();
         s = new Scanner(f);
 
         while (s.hasNext()){
             Team a = findTeam(s.next(), teams_lst);
             Team b = findTeam(s.next(), teams_lst);
+            a.setPoints(0);
+            b.setPoints(0);
             int active_choice = 0;
 
             Team active = a;
@@ -37,16 +39,22 @@ public class Main {
                     else active = b;
                 }
             }
-            if (a.getPoints() > b.getPoints()) a.addWins();
-            if (b.getPoints() > a.getPoints()) b.addWins();
-
+            if (a.getPoints() > b.getPoints()) {
+                a.addWins();
+            }
+            if (b.getPoints() > a.getPoints()) {
+                b.addWins();
+            }
+        }
+        for (Team team : teams_lst) {
+            System.out.println(team);
         }
 
     }
 
     public static Team findTeam(String name, Team[] lst){
-        for(int i = 0; i < lst.length; i++ ){
-            if (lst[i].getName().equals(name)) return lst[i];
+        for (Team team : lst) {
+            if (team.getName().equals(name)) return team;
         }
         return null;
     }
