@@ -10,7 +10,7 @@ public class Team {
 
     public boolean play(int points){
         if (points >0) {
-            this.points ++;
+            this.points += points;
             return true;
         }
         return false;
@@ -30,5 +30,13 @@ public class Team {
 
     public int getPoints() {
         return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public String toString() {
+        return "Name: " + name + " | Wins: " + wins;
     }
 }
